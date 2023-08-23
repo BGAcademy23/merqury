@@ -7,8 +7,12 @@ This session is part of [**Biodiversity Genomics Academy 2023**](https://BGA23.o
 [Arang Rhie](https://genomeinformatics.github.io/people/rhie/)
 Staff Scientist, Genome Informatics Section, National Institutes of Health
 
+Assisted by
 [Steven Solar](https://genomeinformatics.github.io/people/solar/)
 Bioinformatics Scientist, Genome Informatics Section, National Institutes of Health
+
+[Brandon Pickett](https://genomeinformatics.github.io/people/pickett/)
+Postdoctoral Fellow, Genome Informatics Section, National Institutes of Health
 
 ## Description
 
