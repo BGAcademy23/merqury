@@ -1,5 +1,5 @@
-site_name: TEMPLATE
-edit_uri: https://github.com/bgacademy23/TEMPLATE/blob/main/docs
+site_name: merqury
+edit_uri: https://github.com/bgacademy23/merqury/blob/main/docs
 
 nav:
     - Home: README.md
