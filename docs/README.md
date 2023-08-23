@@ -13,6 +13,7 @@ Bioinformatics Scientist, Genome Informatics Section, National Institutes of Hea
 ## Description
 
 By the end of this session you will be able to:
+
 1. Run Meryl and Merqury yourself
 2. Learn how to interpret k-mer histogram and copy-number spectrum plots of haploid, diploid, or poly-ploid genome assemblies
 3. Understand QV, completeness, haplotype switch outputs
