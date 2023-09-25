@@ -14,8 +14,10 @@ tasks:
     wget https://github.com/marbl/meryl/releases/download/v1.4.1/meryl-1.4.1.Linux-amd64.tar.xz
     tar xJf meryl-1.4.1.Linux-amd64.tar.xz
     export PATH=/workspace/meryl-1.4.1/bin/:$PATH
-    git clone https://github.com/marbl/merqury.git merqury-software
-    cd merqury-software
+
+    mv /workspace/merqury /workspace/merqury-bga23
+    git clone https://github.com/marbl/merqury.git
+    cd merqury
     export MERQURY=$PWD
     export PATH=$PWD:$PATH
     cd /workspace
