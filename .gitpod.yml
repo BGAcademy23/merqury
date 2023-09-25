@@ -2,7 +2,7 @@ image: gitpod/workspace-base
 
 tasks:
 - name: install mamba, meryl, merqury
-  init: |
+  command: |
     curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Mambaforge-$(uname)-$(uname -m).sh"
     bash Mambaforge-$(uname)-$(uname -m).sh -b -p /workspace/conda && rm Mambaforge-$(uname)-$(uname -m).sh
     /workspace/conda/bin/mamba init bash
@@ -13,11 +13,6 @@ tasks:
     mamba activate mer
     wget https://github.com/marbl/meryl/releases/download/v1.4.1/meryl-1.4.1.Linux-amd64.tar.xz
     tar xJf meryl-1.4.1.Linux-amd64.tar.xz
-
-  command: |
-    /workspace/conda/bin/mamba init bash
-    source ${HOME}/.bashrc
-    mamba activate mer
 
     export PATH=/workspace/meryl-1.4.1/bin/:$PATH
 
