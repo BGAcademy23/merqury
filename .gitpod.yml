@@ -9,8 +9,12 @@ tasks:
 
     source ${HOME}/.bashrc
 
-    mamba create -n mer -c bioconda merqury meryl=1.4 -y
+    mamba create -n mer -c bioconda merqury -y
     mamba activate mer
+    wget https://github.com/marbl/meryl/releases/download/v1.4.1/meryl-1.4.1.Linux-amd64.tar.xz
+    tar xJf meryl-1.4.1.Linux-amd64.tar.xz
+    export PATH=/workspace/meryl-1.4.1/bin/:$PATH
+    clear
 
 vscode:
   extensions:
