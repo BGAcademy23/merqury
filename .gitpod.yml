@@ -9,6 +9,9 @@ tasks:
 
     source ${HOME}/.bashrc
 
+    mamba create -n mer -c bioconda merqury meryl -y
+    mamba activate mer
+
 vscode:
   extensions:
     - anwar.papyrus-pdf
