@@ -9,7 +9,7 @@ tasks:
 
     source ${HOME}/.bashrc
 
-    mamba create -n mer -c bioconda merqury meryl -y
+    mamba create -n mer -c bioconda merqury meryl=1.4 -y
     mamba activate mer
 
 vscode:
