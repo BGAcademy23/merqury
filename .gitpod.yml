@@ -18,17 +18,18 @@ tasks:
     curl -L https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/data.tar.gz | tar xzf -
 
   command: |
+    /workspace/conda/bin/mamba init bash
+    source ${HOME}/.bashrc
+    mamba activate mer
+    
     mv /workspace/merqury /workspace/merqury-bga23
     git clone https://github.com/marbl/merqury.git
     cd merqury
     export MERQURY=$PWD
     export PATH=$PWD:/workspace/meryl-1.4.1/bin/:$PATH
+
     cd /workspace
 
-    /workspace/conda/bin/mamba init bash
-    source ${HOME}/.bashrc
-    mamba activate mer
-    
     clear
 
 vscode:
