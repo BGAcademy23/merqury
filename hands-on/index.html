@@ -1,0 +1,836 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.2">
+    
+    
+      
+        <title>Merqury Hands-On - merqury</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.d451bc0e.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a5377069.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#merqury-hands-on" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="merqury" class="md-header__button md-logo" aria-label="merqury" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            merqury
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Merqury Hands-On
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="merqury" class="md-nav__button md-logo" aria-label="merqury" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    merqury
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bga23.org" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BGA23
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#learning-objectives" class="md-nav__link">
+    Learning objectives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-is-the-data" class="md-nav__link">
+    Where is the data?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#counting-k-mers" class="md-nav__link">
+    Counting k-mers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-childs-read-histogram" class="md-nav__link">
+    Inspect child’s read histogram
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merqury-with-no-parental-data" class="md-nav__link">
+    Merqury with no parental data
+  </a>
+  
+    <nav class="md-nav" aria-label="Merqury with no parental data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#run-merqury-5-10-min" class="md-nav__link">
+    Run Merqury (5-10 min)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-in-the-output" class="md-nav__link">
+    What’s in the output?
+  </a>
+  
+    <nav class="md-nav" aria-label="What’s in the output?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#qv" class="md-nav__link">
+    QV
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectra-cn-plots" class="md-nav__link">
+    Spectra-cn plots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spectra-asm-plots" class="md-nav__link">
+    Spectra-asm plots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#completeness" class="md-nav__link">
+    Completeness
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merqury-with-parental-data" class="md-nav__link">
+    Merqury with parental data
+  </a>
+  
+    <nav class="md-nav" aria-label="Merqury with parental data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#genrate-hap-mers" class="md-nav__link">
+    Genrate hap-mers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#running-merqury-with-hapmers-on-a-haplotype-phased-diploid-assembly-20-min" class="md-nav__link">
+    Running Merqury with hapmers on a haplotype phased, diploid assembly (~20 min)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#check-qv-completeness-haplotype-switches" class="md-nav__link">
+    Check QV, completeness, haplotype switches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#visualizing-phase-switches" class="md-nav__link">
+    Visualizing phase switches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lets-visualize-hapmers-on-igv" class="md-nav__link">
+    💡 Let’s visualize hapmers on IGV
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-igv" class="md-nav__link">
+    On IGV
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/bgacademy23/merqury/blob/main/docs/hands-on.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="merqury-hands-on">Merqury Hands-On<a class="headerlink" href="#merqury-hands-on" title="Permanent link">&para;</a></h1>
+<p>Get a "Large" instance: 8 cores, 16 G RAM, 50 GB Storage</p>
+<h2 id="learning-objectives">Learning objectives<a class="headerlink" href="#learning-objectives" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Count kmers</li>
+<li>Basic histogram and numbers in the kmer db</li>
+<li>Run Merqury on various assemblies</li>
+<li>Understand Merqury outputs: QV, spectra-cn, spectra-asm, phase block, switches</li>
+</ul>
+<h2 id="where-is-the-data">Where is the data?<a class="headerlink" href="#where-is-the-data" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Download https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/data.tar.gz under /workspace/ and unzip, untar.</li>
+<li>We assume all the input is under <code>/workspace/data/</code>.</li>
+<li>Parental mers: generated from the parental strain assemblies of the falcon-unzip paper (<a href="[10.1038/nmeth.4035](https://doi.org/10.1038%2Fnmeth.4035)">Chin et al., Nat. Methods, 2016</a>).</li>
+<li>Assembly: generated with verkko, using 50x downsampled HiFi and ONT R10 reads from a synthetic Col-0 and Cvi-0 of the A. thaliana centromere paper (<a href="[https://doi.org/10.1038/s41586-023-06062-z](https://doi.org/10.1038/s41586-023-06062-z)">Wlodzimierz et al., Nature, 2023</a>) with and without the full Col-0 and Cvi-0 data as parental genomes.</li>
+</ul>
+<h2 id="counting-k-mers">Counting k-mers<a class="headerlink" href="#counting-k-mers" title="Permanent link">&para;</a></h2>
+<p>Let’s count the kmers in one assembly. Counting operation works in the same way for reads (<code>.fq.gz</code>). For the sake of time, we are just doing it for one assembly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nb">test</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ln<span class="w"> </span>-s<span class="w"> </span>../data/asm/triocanu_clr/f1_triocanu_col.fasta
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>meryl<span class="w"> </span>count<span class="w"> </span><span class="nv">k</span><span class="o">=</span><span class="m">21</span><span class="w"> </span>f1_triocanu_col.fasta<span class="w"> </span>output<span class="w"> </span>test.k21.meryl
+</code></pre></div>
+<h2 id="inspect-childs-read-histogram">Inspect child’s read histogram<a class="headerlink" href="#inspect-childs-read-histogram" title="Permanent link">&para;</a></h2>
+<p>Now, let’s inspect the child’s read kmer set.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>../data/f1/
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>meryl<span class="w"> </span>statistics<span class="w"> </span>F1.k21.meryl<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</code></pre></div>
+<details><summary>💡 How many distinct kmers are in the child’s read?</summary>
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>meryl<span class="w"> </span>statistics<span class="w"> </span>F1.k21.meryl<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>Found<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">command</span><span class="w"> </span>tree.
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Number<span class="w"> </span>of<span class="w"> </span><span class="m">21</span>-mers<span class="w"> </span>that<span class="w"> </span>are:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>unique<span class="w">              </span><span class="m">220768892</span><span class="w">  </span><span class="o">(</span>exactly<span class="w"> </span>one<span class="w"> </span>instance<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>kmer<span class="w"> </span>is<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>input<span class="o">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>distinct<span class="w">            </span>**369212673**<span class="w">  </span><span class="o">(</span>non-redundant<span class="w"> </span>kmer<span class="w"> </span>sequences<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>input<span class="o">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>present<span class="w">            </span><span class="m">4426650250</span><span class="w">  </span><span class="o">(</span>...<span class="o">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>missing<span class="w">         </span><span class="m">4397677298431</span><span class="w">  </span><span class="o">(</span>non-redundant<span class="w"> </span>kmer<span class="w"> </span>sequences<span class="w"> </span>not<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>input<span class="o">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">             </span>number<span class="w"> </span>of<span class="w">   </span>cumulative<span class="w">   </span>cumulative<span class="w">     </span>presence
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">              </span>distinct<span class="w">     </span>fraction<span class="w">     </span>fraction<span class="w">   </span><span class="k">in</span><span class="w"> </span>dataset
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>frequency<span class="w">        </span>kmers<span class="w">     </span>distinct<span class="w">        </span>total<span class="w">       </span><span class="o">(</span>1e-6<span class="o">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>---------<span class="w"> </span>------------<span class="w"> </span>------------<span class="w"> </span>------------<span class="w"> </span>------------
+</code></pre></div>
+
+  Why is it much larger than the genome?
+</details>
+
+<p>Generate the histogram:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>meryl<span class="w"> </span>histogram<span class="w"> </span>F1.k21.meryl<span class="w"> </span>&gt;<span class="w"> </span>F1.k21.hist
+</code></pre></div>
+<p>Download <code>F1.k21.hist</code>, and let <a href="http://qb.cshl.edu/genomescope/genomescope2.0/">GenomeScope</a> tell you about this genome.</p>
+<details><summary> 💡 What’s the genome size? Level of heterozygosity? </summary>
+
+Here is a pre-run GenomeScope result: [http://genomescope.org/genomescope2.0/analysis.php?code=fPC4nXMZtsJF5o5zCPCZ](http://genomescope.org/genomescope2.0/analysis.php?code=fPC4nXMZtsJF5o5zCPCZ)
+
+![Untitled](https://github.com/BGAcademy23/merqury/assets/12814549/ca58d6a1-7128-4416-98b4-88403b017a15)
+
+Answer: Haploid genome size ~153 Mb. Heterozygisoty level 0.991%.
+</details>
+
+<h2 id="merqury-with-no-parental-data">Merqury with no parental data<a class="headerlink" href="#merqury-with-no-parental-data" title="Permanent link">&para;</a></h2>
+<p>Make a new directory, and link the data needed.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/workspace/hands-on/verkko_asm/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/workspace/hands-on/verkko_asm/
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Assembly</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>ln<span class="w"> </span>-s<span class="w"> </span>/workspace/data/asm/verkko_hifi/f1_verkko_hifi.fasta
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># Read kmer db</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>ln<span class="w"> </span>-s<span class="w"> </span>/workspace/data/f1/F1.k21.meryl
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># See how to run merqury</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nv">$MERQURY</span>/merqury.sh
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>Usage:<span class="w"> </span>merqury.sh<span class="w"> </span><span class="o">[</span>-c<span class="o">]</span><span class="w"> </span>&lt;read-db.meryl&gt;<span class="w"> </span><span class="o">[</span>&lt;mat.meryl&gt;<span class="w"> </span>&lt;pat.meryl&gt;<span class="o">]</span><span class="w"> </span>&lt;asm1.fasta&gt;<span class="w"> </span><span class="o">[</span>asm2.fasta<span class="o">]</span><span class="w"> </span>&lt;out&gt;
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span>-c<span class="w">      </span>:<span class="w"> </span><span class="o">[</span>OPTIONAL<span class="o">]</span><span class="w"> </span>input<span class="w"> </span>meryl<span class="w"> </span>databases<span class="w"> </span>are<span class="w"> </span>homopolymer<span class="w"> </span>compressed,<span class="w"> </span><span class="k">while</span><span class="w"> </span>asm.fasta<span class="w"> </span>isn<span class="err">&#39;</span>t
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">              </span>This<span class="w"> </span>option<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>supported<span class="w"> </span><span class="k">for</span><span class="w"> </span>trio-based<span class="w"> </span>analysis.<span class="w"> </span>Use<span class="w"> </span>pre-compressed<span class="w"> </span>assemblies<span class="w"> </span>with<span class="w"> </span>no<span class="w"> </span>-c<span class="w"> </span>option.
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span>&lt;read-db.meryl&gt;<span class="w"> </span>:<span class="w"> </span>k-mer<span class="w"> </span>counts<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span><span class="nb">read</span><span class="w"> </span><span class="nb">set</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span>&lt;mat.meryl&gt;<span class="w"> </span>:<span class="w"> </span>k-mer<span class="w"> </span>counts<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>maternal<span class="w"> </span>haplotype<span class="w"> </span><span class="o">(</span>ex.<span class="w"> </span>mat.hapmer.meryl<span class="o">)</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span>&lt;pat.meryl&gt;<span class="w"> </span>:<span class="w"> </span>k-mer<span class="w"> </span>counts<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>paternal<span class="w"> </span>haplotype<span class="w"> </span><span class="o">(</span>ex.<span class="w"> </span>pat.hapmer.meryl<span class="o">)</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span>&lt;asm1.fasta&gt;<span class="w">    </span>:<span class="w"> </span>Assembly<span class="w"> </span>fasta<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>ex.<span class="w"> </span>pri.fasta,<span class="w"> </span>hap1.fasta<span class="w"> </span>or<span class="w"> </span>maternal.fasta<span class="o">)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="o">[</span>asm2.fasta<span class="o">]</span><span class="w">    </span>:<span class="w"> </span>Additional<span class="w"> </span>fasta<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>ex.<span class="w"> </span>alt.fasta,<span class="w"> </span>hap2.fasta<span class="w"> </span>or<span class="w"> </span>paternal.fasta<span class="o">)</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span>*asm1.meryl<span class="w"> </span>and<span class="w"> </span>asm2.meryl<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>generated.<span class="w"> </span>Avoid<span class="w"> </span>using<span class="w"> </span>the<span class="w"> </span>same<span class="w"> </span>names<span class="w"> </span>as<span class="w"> </span>the<span class="w"> </span>hap-mer<span class="w"> </span>dbs
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">    </span>&lt;out&gt;<span class="w">       </span>:<span class="w"> </span>Output<span class="w"> </span>prefix
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>Arang<span class="w"> </span>Rhie,<span class="w"> </span><span class="m">2022</span>-09-07.<span class="w"> </span>arrhie@gmail.com
+</code></pre></div>
+<h3 id="run-merqury-5-10-min">Run Merqury (5-10 min)<a class="headerlink" href="#run-merqury-5-10-min" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">$MERQURY</span>/merqury.sh<span class="w"> </span>F1.k21.meryl/<span class="w"> </span>f1_verkko_hifi.fasta<span class="w"> </span>verkko_asm
+</code></pre></div>
+<details><summary> ⏳ While waiting… What kmer size should I use? </summary>
+
+Merqury has a simple script that computes the best k-size based on [Fofanov et al., Bioinformatics (2004)]([10.1093/bioinformatics/bth266](https://doi.org/10.1093/bioinformatics/bth266)).
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>$MERQURY/best_k.sh
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Usage: ./best_k.sh [-c] &lt;genome_size&gt; [tolerable_collision_rate]
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>  -c         : [OPTIONAL] evaluation will be on homopolymer compressed genome. EXPERIMENTAL
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>  genome_size: Haploid genome size or diploid genome size, depending on what we evaluate. In bp.
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>  tolerable_collision_rate: [OPTIONAL] Error rate in the read set. DEFAULT=0.001 for illumina WGS
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>See Fofanov et al. Bioinformatics, 2004 for more details.
+</code></pre></div>
+
+Depending on the error rate in the reads, the k could be smaller or larger. The only thing to remember is that smaller kmer have a higher collision rate, meaning there is a higher chance the repeats will be less distinguishable. I recommended using k=21 for reasonable sized genomes (~5 Gb) when evaluating CLR-based assemblies. I’d like to note that the k given here is the lower bound of the k-size. Depending on the assembly quality and the bp accuracy of the sequencing read set, it is recommended to increase the k size, e.g. k=31.
+
+For a. thaliana, the haploid genome size was ~153 Mb - so the best k for evaluating a haploid assembly is
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>$MERQURY/best_k.sh 153000000
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>genome: 153000000
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>tolerable collision rate: 0.001
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>18.5766
+</code></pre></div>
+
+For diploid assembly, simply double the genome size as a rough estimate:
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$MERQURY/best_k.sh 306000000
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>genome: 306000000
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>tolerable collision rate: 0.001
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>19.0766
+</code></pre></div>
+
+We are using k=21 throughout this exercise, which is higher than the suggested 19. The higher the k-mer size, the more conservative the QV becomes.
+</details>
+
+<h2 id="whats-in-the-output">What’s in the output?<a class="headerlink" href="#whats-in-the-output" title="Permanent link">&para;</a></h2>
+<h3 id="qv">QV<a class="headerlink" href="#qv" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span>verkko_asm.qv
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="c1"># f1_verkko_hifi    620933  304044764   40.1169 9.73443e-05</span>
+</code></pre></div>
+<details><summary> 💡 What is the QV? </summary>
+
+QV is `40.1`. There are `620933` error kmers, kmers never seen in the reads. The assembly has `304044764` kmers. This matches roughly the diploid genome size.
+
+</details>
+
+<h3 id="spectra-cn-plots">Spectra-cn plots<a class="headerlink" href="#spectra-cn-plots" title="Permanent link">&para;</a></h3>
+<p>See <code>verkko_asm.f1_verkko_hifi.spectra-cn.ln.png</code>. This is the ‘unstacked’, line plot of the kmer spectrum.</p>
+<details><summary>  💡 verkko_asm.f1_verkko_hifi.spectra-cn.ln.png </summary>
+
+![verkko_asm f1_verkko_hifi spectra-cn ln](https://github.com/BGAcademy23/merqury/assets/12814549/6255fbc3-3fbe-4e47-aac5-3caab1feea8a)
+
+</details>
+
+<details><summary> 💡 How does the assembly spectrum look like? </summary>
+
+The kmers seen once (red 1) in the assembly overlap the haploid, 1-cp peak. Likewise, kmers seen twice (blue 2) in the assembly overlap the 2-cp peak. The 3-cp and 4-cp peak are also observed in the expected range, albeit it is hard to clearly distinguish the peaks. In overall, the assembly seems to contain copy numbers as expected, within the 1-4 copy range.
+
+The number of kmers only seen in the assembly (error kmers) are shown as a bar at 0. These are the kmers never seen in the read, thus likely representing a consensus error.
+
+The read-only curve shows kmers present in the read, but never found in the assembly. These kmers are usually occur at low-frequency across the read set, and are likely errors in the sequenced read. One should be alerted when the black line has a ‘bump’ at 1-cp peak or higher, as those are indicating missing sequences in the assembly. Completeness is measured using these kmers.
+
+</details>
+
+<h3 id="spectra-asm-plots">Spectra-asm plots<a class="headerlink" href="#spectra-asm-plots" title="Permanent link">&para;</a></h3>
+<p>This time, we are interested in the assembly spectrum, regardless of the kmer counts in the assembly. This helps visualize the missing portion of the assembly.</p>
+<details><summary> 💡 See verkko_asm.spectra-asm.ln.png </summary>
+
+![verkko_asm spectra-asm ln](https://github.com/BGAcademy23/merqury/assets/12814549/64e25393-0ad5-44a8-a1c4-b836d36c2510)
+
+</details>
+
+<h3 id="completeness">Completeness<a class="headerlink" href="#completeness" title="Permanent link">&para;</a></h3>
+<p>Merqury uses heuristics to define ‘reliable’ kmers. Ignoring the low-frequency kmers, this time, Merqury computes how many are observed in the assembly out of the total reliable kmers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>cat<span class="w"> </span>verkko_asm.completeness.stats<span class="w"> </span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>f1_verkko_hifi<span class="w">  </span>all<span class="w"> </span><span class="m">129890454</span><span class="w">   </span><span class="m">131495725</span><span class="w">   </span><span class="m">98</span>.7792
+</code></pre></div>
+<details><summary> 💡 What’s the threshold used to compute completeness? </summary>
+
+See `logs/verkko_asm.spectra-cn.log`.
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>...
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Filter<span class="w"> </span>out<span class="w"> </span>kmers<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span><span class="m">5</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>...
+</code></pre></div>
+
+This means we are using kmers seen more than 5 times in the reads as ‘reliable’. Note there is always a chance a ‘read-only’ kmer to be seen in the ‘reliable’ set, regardless of the sequencing depth, due to sequencing errors and biases, which could probabilistically occur at a higher frequency.
+</details>
+
+<h2 id="merqury-with-parental-data">Merqury with parental data<a class="headerlink" href="#merqury-with-parental-data" title="Permanent link">&para;</a></h2>
+<h3 id="genrate-hap-mers">Genrate hap-mers<a class="headerlink" href="#genrate-hap-mers" title="Permanent link">&para;</a></h3>
+<p>This time, we will utilize the parental kmers. The pre-computed meryl dbs are available under <code>/workspace/data/parental/</code>. It is important to run <code>[hapmers.sh](http://hapmers.sh)</code> before using hapmers.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Make a new directory, &#39;hapmers&#39;.</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">cd</span><span class="w"> </span>/workspace/hands-on
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>hapmers<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>hapmers
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># Link data</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../data/f1/F1.k21.meryl<span class="w">           </span><span class="c1"># F1 read kmer</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../data/parental/Col-0.k21.meryl/<span class="w"> </span><span class="c1"># Col-0 haplotype genome asm&#39;s kmer</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../data/parental/Cvi-0.k21.meryl/<span class="w"> </span><span class="c1"># Cvi-0 haplotype genome asm&#39;s kmer</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="c1"># See how to run hapmers.sh</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="nv">$MERQURY</span>/trio/hapmers.sh
+</code></pre></div>
+<details><summary> 💡 How do I generate my hapmers? </summary>
+
+Because we are using kmers from haplotype genome’s assemblies, and not directly from the reads, use `-no-filt` option. This is an unusual case, and only done because we are limited from space and time for this session. If possible, count kmers from the parental reads directly and run `hapmers.sh` without the `-no-filt` option.
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># Run hapmers.sh</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">$MERQURY</span>/trio/hapmers.sh<span class="w"> </span>Col-0.k21.meryl/<span class="w"> </span>Cvi-0.k21.meryl/<span class="w"> </span>F1.k21.meryl/<span class="w"> </span>-no-filt
+</code></pre></div>
+
+</details>
+
+<details><summary> 💡 What is the intherited, hapmer spectrum? </summary>
+
+See `inherited_hapmers.ln.png`.
+
+![inherited_hapmers ln](https://github.com/BGAcademy23/merqury/assets/12814549/520328df-cb9e-44c4-8df3-63d5e46ca2fc)
+
+Note the roughly 1:1 portion of the hapmers, which nicely covers most of the 1-cp peak. We see this more often in highly diverged sub-species, with minimal shared genomic content between the parents. Compare this to a hapmer obtained from a human:
+
+![inherited_hapmers ln 1](https://github.com/BGAcademy23/merqury/assets/12814549/653fa2b0-7933-4afc-8400-df3ef48f67ac)
+
+Here, we see a lot less of the mat pat hapmers, and a larger amount of shared kmers in the 1-cp region (10~50x kmer multiplicity). This is likely because the child inherited kmers from the parental genome, which both heterozygous haplotypes are present in the parental genome (Mat had AB and Pat had AB, Child inherited AB) or are not distinguishable (Mat had AA and Pat had AB, Child inherited AB - in this case, A is not distinguishable, only B is.).
+
+</details>
+
+<h3 id="running-merqury-with-hapmers-on-a-haplotype-phased-diploid-assembly-20-min">Running Merqury with hapmers on a haplotype phased, diploid assembly (~20 min)<a class="headerlink" href="#running-merqury-with-hapmers-on-a-haplotype-phased-diploid-assembly-20-min" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>../
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>verkko_dip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>verkko_dip
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../data/f1/F1.k21.meryl/
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>ln<span class="w"> </span>-s<span class="w"> </span>../hapmers/Col-0.k21.hapmer.meryl/
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>ln<span class="w"> </span>-s<span class="w"> </span>../hapmers/Cvi-0.k21.hapmer.meryl/
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../data/asm/verkko_trio_hifi/f1_verkko_col.fasta<span class="w"> </span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>ln<span class="w"> </span>-s<span class="w"> </span>../../data/asm/verkko_trio_hifi/f1_verkko_cvi.fasta
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="nv">$MERQURY</span>/merqury.sh<span class="w"> </span>F1.k21.meryl/<span class="w"> </span>Col-0.k21.hapmer.meryl/<span class="w"> </span>Cvi-0.k21.hapmer.meryl/<span class="w"> </span>f1_verkko_col.fasta<span class="w"> </span>f1_verkko_cvi.fasta<span class="w"> </span>verkko_dip
+<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
+<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a>read:<span class="w"> </span>F1.k21.meryl
+<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a>Haplotype<span class="w"> </span>dbs<span class="w"> </span>provided.
+<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a>Running<span class="w"> </span>Merqury<span class="w"> </span><span class="k">in</span><span class="w"> </span>trio<span class="w"> </span>mode...
+<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a>
+<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a>hap1:<span class="w"> </span>Col-0.k21.hapmer.meryl
+<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a>hap2:<span class="w"> </span>Cvi-0.k21.hapmer.meryl
+<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>asm1:<span class="w"> </span>f1_verkko_col.fasta
+<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a>asm2:<span class="w"> </span>f1_verkko_cvi.fasta
+<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a>out<span class="w"> </span>:<span class="w"> </span>verkko_dip
+<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a>
+<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a>Get<span class="w"> </span>spectra-cn<span class="w"> </span>plots<span class="w"> </span>and<span class="w"> </span>QV<span class="w"> </span>stats
+<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a>
+<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a>Get<span class="w"> </span>blob<span class="w"> </span>plots
+<a id="__codelineno-14-26" name="__codelineno-14-26" href="#__codelineno-14-26"></a>
+<a id="__codelineno-14-27" name="__codelineno-14-27" href="#__codelineno-14-27"></a>Get<span class="w"> </span>haplotype<span class="w"> </span>specfic<span class="w"> </span>spectra-cn<span class="w"> </span>plots
+<a id="__codelineno-14-28" name="__codelineno-14-28" href="#__codelineno-14-28"></a>
+<a id="__codelineno-14-29" name="__codelineno-14-29" href="#__codelineno-14-29"></a>Get<span class="w"> </span>phase<span class="w"> </span>blocks
+<a id="__codelineno-14-30" name="__codelineno-14-30" href="#__codelineno-14-30"></a>...
+</code></pre></div>
+<h3 id="check-qv-completeness-haplotype-switches">Check QV, completeness, haplotype switches<a class="headerlink" href="#check-qv-completeness-haplotype-switches" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cat<span class="w"> </span>verkko_dip.qv
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>f1_verkko_col<span class="w">   </span><span class="m">277023</span><span class="w">  </span><span class="m">148586323</span><span class="w">   </span><span class="m">40</span>.513<span class="w">  </span><span class="m">8</span>.88594e-05
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>f1_verkko_cvi<span class="w">   </span><span class="m">213105</span><span class="w">  </span><span class="m">154022987</span><span class="w">   </span><span class="m">41</span>.8092<span class="w"> </span><span class="m">6</span>.59288e-05
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>Both<span class="w">    </span><span class="m">490128</span><span class="w">  </span><span class="m">302609310</span><span class="w">   </span><span class="m">41</span>.1246<span class="w"> </span><span class="m">7</span>.71868e-05
+</code></pre></div>
+<p>This time, we have QV for each and both assemblies combined.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>cat<span class="w"> </span>verkko_dip.completeness.stats<span class="w"> </span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>f1_verkko_col<span class="w">   </span>all<span class="w"> </span><span class="m">108663696</span><span class="w">   </span><span class="m">131495725</span><span class="w">   </span><span class="m">82</span>.6367
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>f1_verkko_cvi<span class="w">   </span>all<span class="w"> </span><span class="m">108589169</span><span class="w">   </span><span class="m">131495725</span><span class="w">   </span><span class="m">82</span>.58
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>both<span class="w">    </span>all<span class="w"> </span><span class="m">129889048</span><span class="w">   </span><span class="m">131495725</span><span class="w">   </span><span class="m">98</span>.7782
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>f1_verkko_col<span class="w">   </span>Col-0.k21.hapmer<span class="w">    </span><span class="m">21749217</span><span class="w">    </span><span class="m">21760542</span><span class="w">    </span><span class="m">99</span>.948
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>f1_verkko_col<span class="w">   </span>Cvi-0.k21.hapmer<span class="w">    </span><span class="m">322137</span><span class="w">  </span><span class="m">21623509</span><span class="w">    </span><span class="m">1</span>.48975
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>f1_verkko_cvi<span class="w">   </span>Col-0.k21.hapmer<span class="w">    </span><span class="m">579708</span><span class="w">  </span><span class="m">21760542</span><span class="w">    </span><span class="m">2</span>.66403
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>f1_verkko_cvi<span class="w">   </span>Cvi-0.k21.hapmer<span class="w">    </span><span class="m">21401749</span><span class="w">    </span><span class="m">21623509</span><span class="w">    </span><span class="m">98</span>.9744
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>both<span class="w">    </span>Col-0.k21.hapmer<span class="w">    </span><span class="m">21751138</span><span class="w">    </span><span class="m">21760542</span><span class="w">    </span><span class="m">99</span>.9568
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>both<span class="w">    </span>Cvi-0.k21.hapmer<span class="w">    </span><span class="m">21610226</span><span class="w">    </span><span class="m">21623509</span><span class="w">    </span><span class="m">99</span>.9386
+</code></pre></div>
+<p>The first three lines show completeness (%) per assembly and both, as the portion of reliable kmers found in the reads. The rest are shown per-hapmers.</p>
+<p>f1_verkko_col   Col-0.k21.hapmer - here we expect only Col-0 kmers to be found. However, the next line, f1_verkko_col   Cvi-0.k21.hapmer indicates there are 1.49% of the Cvi-0 hapmers found in the col assembly, which is likely a switch error. Likewise, f1_verkko_cvi  Col-0.k21.hapmer shows unexpected Col-0 hapmers found in the cvi assembly.</p>
+<p>both lines at the bottom shows the haplotype completeness regardless of each assembly.</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>cat<span class="w"> </span>verkko_dip.*.switches.txt
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>verkko_dip.f1_verkko_col.100_20000<span class="w"> </span>switch<span class="w"> </span>error<span class="w"> </span>rate<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span><span class="o">(</span>Num.<span class="w"> </span>switches<span class="w"> </span>/<span class="w"> </span>Total<span class="w"> </span>markers<span class="w"> </span>found<span class="o">)</span>:<span class="w"> </span><span class="m">261481</span><span class="w">  </span><span class="m">25730538</span><span class="w">    </span><span class="m">1</span>.01623%
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>verkko_dip.f1_verkko_cvi.100_20000<span class="w"> </span>switch<span class="w"> </span>error<span class="w"> </span>rate<span class="w"> </span><span class="o">(</span>%<span class="o">)</span><span class="w"> </span><span class="o">(</span>Num.<span class="w"> </span>switches<span class="w"> </span>/<span class="w"> </span>Total<span class="w"> </span>markers<span class="w"> </span>found<span class="o">)</span>:<span class="w"> </span><span class="m">661467</span><span class="w">  </span><span class="m">25227589</span><span class="w">    </span><span class="m">2</span>.622%
+</code></pre></div>
+Merqury automatically tries to find locally phased blocks given the marker presence. By default, Merqury allows up to 100 switches within 20kb, roughly translated into allowing maximum of 0.5% of short-range switches within a minimum of ~20kb window. Once the phase blocks are defined, the num. observed switches (unexpected hapmers) are counted for calculating the switch error rate (%). Here, we see col assembly has switch error rate of 1.0%, while the cvi assembly has slightly higher, 2.6%. <a href="https://github.com/marbl/merqury/wiki/3.-Phasing-assessment-with-hap-mers#5-phased-block-statistics-and-switch-error-rates">Find more details here</a>.</p>
+<h3 id="visualizing-phase-switches">Visualizing phase switches<a class="headerlink" href="#visualizing-phase-switches" title="Permanent link">&para;</a></h3>
+<p>The most intuitive way in Merqury to visualize phase switches is via blob-plot. See <code>verkko_dip.hapmers.blob.png</code>.</p>
+<p><img alt="verkko_dip hapmers blob" src="https://github.com/BGAcademy23/merqury/assets/12814549/340a0c8b-6700-4ca6-8d3a-5d6c9c7218fe" /></p>
+<p>Each circle represents a scaffold, with the circle size relative to the length. The better the assembly is haplotype resolved, we see the circles plotted along the X and Y axis, which indicates the num. of hapmers found in each scaffold.</p>
+<p>There are a few off-axis circles, indicating switch error in the assembly.</p>
+<p>Next, we can check how large the phased blocks are. See <code>verkko_dip.f1_verkko_cvi.block.N.png</code>.</p>
+<p><img alt="verkko_dip f1_verkko_cvi block N" src="https://github.com/BGAcademy23/merqury/assets/12814549/b5bde8be-284a-4724-808c-5aee3a387697" /></p>
+<p>We see there are a few &lt;~1 Mb blocks consisting of Col hapmers. Where are they in the assembly?</p>
+<h3 id="lets-visualize-hapmers-on-igv">💡 Let’s visualize hapmers on IGV<a class="headerlink" href="#lets-visualize-hapmers-on-igv" title="Permanent link">&para;</a></h3>
+<p>Concatenate each hapmer track to easily visualize on the diploid assembly.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cat<span class="w"> </span>*Col-0.k21.hapmer.wig<span class="w"> </span>&gt;<span class="w"> </span>verkko_dip.Col-0.k21.hapmer.wig
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>cat<span class="w"> </span>*Cvi-0.k21.hapmer.wig<span class="w"> </span>&gt;<span class="w"> </span>verkko_dip.Cvi-0.k21.hapmer.wig
+</code></pre></div>
+<h3 id="on-igv">On IGV<a class="headerlink" href="#on-igv" title="Permanent link">&para;</a></h3>
+<p>Under <code>Genomes</code>, <code>Load Genome from URL</code>: <a href="https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/hands-on/verkko_dip.fasta"><code>https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/hands-on/verkko_dip.fasta</code></a></p>
+<p>Download the verkko_dip.C*-0.k21.hapmer.wig files, or load from URL:</p>
+<ul>
+<li>Under <code>File</code>, <code>Load from URL</code>:<ul>
+<li>https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/hands-on/verkko_dip/verkko_dip.Col-0.k21.hapmer.wig</li>
+<li>https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/hands-on/verkko_dip/verkko_dip.Cvi-0.k21.hapmer.wig</li>
+</ul>
+</li>
+</ul>
+<p>Also create the error kmer track from *_only.wig:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>cat<span class="w"> </span>*_only.wig<span class="w"> </span>&gt;<span class="w"> </span>verkko_dip.error.wig
+</code></pre></div>
+<p>Again, load it directly or load from URL:</p>
+<ul>
+<li>https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/hands-on/verkko_dip/verkko_dip.error.wig</li>
+</ul>
+<p>💡Tip: Give colors as you’d like for each track.
+<img width="1274" alt="image" src="https://github.com/BGAcademy23/merqury/assets/12814549/fe55e446-ffea-4bf8-b089-fa9675ed58a8"></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://twitter.com/BGAcademy23" target="_blank" rel="noopener" title="Biodiversity Genomics Academy 2023 on Twitter" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+    </a>
+  
+    
+    
+      
+    
+    
+    
+    <a href="https://genomic.social/@BGAcademy23" target="_blank" rel="noopener me" title="Biodiversity Genomics Academy 2023 on Mastodon - Genomic.Social" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M433 179.11c0-97.2-63.71-125.7-63.71-125.7-62.52-28.7-228.56-28.4-290.48 0 0 0-63.72 28.5-63.72 125.7 0 115.7-6.6 259.4 105.63 289.1 40.51 10.7 75.32 13 103.33 11.4 50.81-2.8 79.32-18.1 79.32-18.1l-1.7-36.9s-36.31 11.4-77.12 10.1c-40.41-1.4-83-4.4-89.63-54a102.54 102.54 0 0 1-.9-13.9c85.63 20.9 158.65 9.1 178.75 6.7 56.12-6.7 105-41.3 111.23-72.9 9.8-49.8 9-121.5 9-121.5zm-75.12 125.2h-46.63v-114.2c0-49.7-64-51.6-64 6.9v62.5h-46.33V197c0-58.5-64-56.6-64-6.9v114.2H90.19c0-122.1-5.2-147.9 18.41-175 25.9-28.9 79.82-30.8 103.83 6.1l11.6 19.5 11.6-19.5c24.11-37.1 78.12-34.8 103.83-6.1 23.71 27.3 18.4 53 18.4 175z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.action.edit", "content.code.annotate", "content.code.copy", "navigation.footer", "navigation.top", "navigation.tracking", "search.highlight", "search.share", "search.suggest", "toc.follow"], "search": "../assets/javascripts/workers/search.a264c092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.726fbb30.min.js"></script>
+      
+    
+  </body>
+</html>
