@@ -14,7 +14,7 @@ Get a "Large" instance: 8 cores, 16 G RAM, 50 GB Storage
 - Download https://genomeark.s3.amazonaws.com/trainingmaterials/BGA2023/Merqury/data.tar.gz under /workspace/ and unzip, untar.
 - We assume all the input is under `/workspace/data/`.
 - Parental mers: generated from the parental strain assemblies of the falcon-unzip paper ([Chin et al., Nat. Methods, 2016]([10.1038/nmeth.4035](https://doi.org/10.1038%2Fnmeth.4035))).
-- Assembly: generated with verkko, using 50x downsampled HiFi and ONT R10 reads from a synthetic Col-0 and Cvi-0 of the A. thaliana centromere paper ([Wlodzimierz et al., Nature, 2023]([https://doi.org/10.1038/s41586-023-06062-z](https://doi.org/10.1038/s41586-023-06062-z))) with and without the full Col-0 and Cvi-0 data as parental genomes. The last set is from the trio-binning paper, as an example of lower quality poor assembly.
+- Assembly: generated with verkko, using 50x downsampled HiFi and ONT R10 reads from a synthetic Col-0 and Cvi-0 of the A. thaliana centromere paper ([Wlodzimierz et al., Nature, 2023]([https://doi.org/10.1038/s41586-023-06062-z](https://doi.org/10.1038/s41586-023-06062-z))) with and without the full Col-0 and Cvi-0 data as parental genomes.
 
 ## Counting k-mers
 
