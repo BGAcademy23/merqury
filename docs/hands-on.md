@@ -216,9 +216,9 @@ This means we are using kmers seen more than 5 times in the reads as ‘reliable
 This time, we will utilize the parental kmers. The pre-computed meryl dbs are available under `/workspace/data/parental/`. It is important to run `[hapmers.sh](http://hapmers.sh)` before using hapmers.
 
 ```bash
-# Make a new directory, 'hapmer'.
-cd ../
-mkdir -p hapmers
+# Make a new directory, 'hapmers'.
+cd /workspace/hands-on
+mkdir -p hapmers && cd hapmers
 
 # Link data
 ln -s ../../data/f1/F1.k21.meryl           # F1 read kmer
